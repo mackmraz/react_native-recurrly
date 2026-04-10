@@ -5,7 +5,8 @@ const SignUp = () => {
   return (
     <View>
       <Text>SignUp</Text>
-      <Link href="/(auth)/sign-up">Sign Up</Link>
+      <Link href="/(auth)/sign-in">Already have an account? Sign In</Link>
+      <Link href="/">Go Back</Link>
     </View>
   );
 };
