@@ -1,7 +1,7 @@
 import {
-    formatCurrency,
-    formatStatusLabel,
-    formatSubscriptionDateTime,
+  formatCurrency,
+  formatStatusLabel,
+  formatSubscriptionDateTime,
 } from "@/lib/utils";
 import clsx from "clsx";
 import React from "react";
@@ -23,6 +23,7 @@ const SubscriptionCard = ({
   status,
   onPress,
 }: SubscriptionCardProps) => {
+  const fallback = "Not provided";
   return (
     <Pressable
       onPress={onPress}
@@ -60,7 +61,7 @@ const SubscriptionCard = ({
                   numberOfLines={1}
                   ellipsizeMode="tail"
                 >
-                  {paymentMethod?.trim()}
+                  {paymentMethod?.trim() || fallback}
                 </Text>
               </View>
             </View>
@@ -72,7 +73,7 @@ const SubscriptionCard = ({
                   numberOfLines={1}
                   ellipsizeMode="tail"
                 >
-                  {category?.trim() || plan?.trim()}
+                  {category?.trim() || plan?.trim() || fallback}
                 </Text>
               </View>
             </View>
@@ -84,7 +85,7 @@ const SubscriptionCard = ({
                   numberOfLines={1}
                   ellipsizeMode="tail"
                 >
-                  {startDate ? formatSubscriptionDateTime() : ""}
+                  {startDate ? formatSubscriptionDateTime(startDate) : fallback}
                 </Text>
               </View>
             </View>
@@ -96,7 +97,9 @@ const SubscriptionCard = ({
                   numberOfLines={1}
                   ellipsizeMode="tail"
                 >
-                  {renewalDate ? formatSubscriptionDateTime(renewalDate) : ""}
+                  {renewalDate
+                    ? formatSubscriptionDateTime(renewalDate)
+                    : fallback}
                 </Text>
               </View>
             </View>
@@ -108,7 +111,7 @@ const SubscriptionCard = ({
                   numberOfLines={1}
                   ellipsizeMode="tail"
                 >
-                  {status ? formatStatusLabel(status) : ""}
+                  {status ? formatStatusLabel(status) : fallback}
                 </Text>
               </View>
             </View>
